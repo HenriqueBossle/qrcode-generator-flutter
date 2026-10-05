@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Gerador de QRCode',
       theme: ThemeData(
 
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: .fromSeed(seedColor: const Color.fromARGB(255, 16, 32, 172)),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Gerador de QRCode dinâmico'),
     );
   }
 }
@@ -48,18 +49,35 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: .center,
           children: [
             if(!dataQrCode.isEmpty) QrImageView(data: dataQrCode, size: 200),
+            Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+            ),
             TextField(
-
               controller: txtController,
               decoration: const InputDecoration(
-                labelText: 'Informe a URL para o QRCode: '
+                labelText: 'Informe a URL para o QRCode: ',
+               
               ),
+            ),
+            Padding(
+                padding: const EdgeInsets.only(top: 20.0),
             ),
             ElevatedButton(onPressed: (){
               setState(() {
                 dataQrCode = txtController.text;
               });
-            }, child: Text("Gerar QRCode"))
+              
+            },
+
+            
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, // Cor de fundo do botão
+              foregroundColor: Colors.white, // Cor do texto ou ícone
+            ),
+            
+            child: 
+            Text("Gerar QRCode")
+            )
           ],
         ),
       ),
