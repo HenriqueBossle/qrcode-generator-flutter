@@ -50,18 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             if(!dataQrCode.isEmpty) QrImageView(data: dataQrCode, size: 200),
             Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-            ),
-            TextField(
+                padding: const EdgeInsets.all(30.0),
+            
+            child: TextField(
               controller: txtController,
-              decoration: const InputDecoration(
-                labelText: 'Informe a URL para o QRCode: ',
-               
+              decoration: InputDecoration(
+                  labelText: 'Informe a URL para o QRCode: ',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.only(top: 20.0),
             ),
+            
             ElevatedButton(onPressed: (){
               setState(() {
                 dataQrCode = txtController.text;
